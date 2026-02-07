@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Aditi! 🐱🍫</title>
+    <!-- Simple emoji favicon (shows in browser tab) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎉</text></svg>">
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful, cute font - not formal */
+            background: linear-gradient(to bottom, #ff9a9e, #d4a574, #fecfef, #c963d4); /* Pastel pink with chocolate brown warmth */
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite; /* Subtle background animation */
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+            animation: bounceIn 1s ease-out; /* Bouncy entrance on load */
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        p {
+            font-size: 1.5em;
+            color: #c2185b; /* Darker shade of pink for visibility and thematic cuteness */
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .brownie {
+            font-size: 6em;
+            margin: 30px 0;
+            animation: wiggle 2s ease-in-out infinite; /* Cute brownie wiggle */
+            filter: drop-shadow(0 0 10px #8b4513); /* Warm chocolate glow */
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        button {
+            background: linear-gradient(to right, #ff6b6b, #d4a574); /* Pink to chocolate brown */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            font-family: inherit;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+        #specialWish {
+            display: none;
+            font-size: 1.8em;
+            color: #e91e63;
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            animation: fadeInHeart 1s ease-out; /* Simple fade-in with scale for reveal */
+            box-shadow: 0 4px 8px rgba(149, 142, 142, 0.1);
+        }
+
+        @keyframes fadeInHeart {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Floating paws and hearts animation */
+        .floating-element {
+            position: absolute;
+            font-size: 2em;
+            color: #ff69b4;
+            pointer-events: none;
+            animation: floatUp 6s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            h1 { font-size: 2em; }
+            p { font-size: 1.2em; }
+            .brownie { font-size: 4em; }
+            button { padding: 12px 24px; font-size: 1em; }
+            #specialWish { font-size: 1.4em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Floating paws and hearts container -->
+        <div id="floatContainer"></div>
+
+        <h1>Happy Birthday, Aditi! 🐱🎉</h1>
+        <p>Wishing you a purr-fect day full of yummy chocolate and delicious brownies, and a lovely day with your family. On today's special day – let's celebrate your birthday! 🍫🐾💖</p>
+        
+        <div class="brownie">🍫🧁</div>
+        
+        <button id="wishBtn">Click for a Special Wish! 🎁</button>
+        <div id="specialWish">Happy Birthday Aditi 💐. May God bless you with happiness, love. Have a amazing day with your family & hope this little page makes you smile 😊</div>
+        </div>
+
+    <script>
+        // JavaScript for interactivity and animations
+
+        // Create floating paws or hearts randomly
+        function createFloatingElement() {
+            const element = document.createElement('div');
+            element.className = 'floating-element';
+            
+            // Randomly choose between paw and heart (50/50 chance)
+            const isPaw = Math.random() > 0.5;
+            element.innerHTML = isPaw ? '🐾' : '💖';
+            element.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            element.style.animationDuration = (Math.random() * 3 + 4) + 's'; // Random speed
+            
+            document.getElementById('floatContainer').appendChild(element);
+
+            // Remove element after animation
+            setTimeout(() => {
+                element.remove();
+            }, 7000);
+        }
+
+        // Generate floating elements periodically
+        setInterval(createFloatingElement, 1000); // One element every second
+        createFloatingElement(); // Initial element
+
+        // Button click to show special wish with simple animation
+        document.getElementById('wishBtn').addEventListener('click', function() {
+            const wish = document.getElementById('specialWish');
+            if (wish.style.display === 'block') {
+                wish.style.display = 'none'; // Toggle for multiple clicks
+                this.textContent = 'Click for a Special Wish! 🎁';
+                this.style.background = 'linear-gradient(to right, #ff6b6b, #d4a574)'; // Reset to original
+            } else {
+                wish.style.display = 'block';
+                this.textContent = 'Yay! Happy Birthday!! 🐾💖';
+                this.style.background = 'linear-gradient(to right, #FF00FF, #ED83AA)'; // Magenta success color
+
+                // Add extra floating elements on click for fun (mix of paws and hearts)
+                for (let i = 0; i < 5; i++) {
+                    setTimeout(createFloatingElement, i * 200);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
